@@ -2,7 +2,7 @@ import React from 'react';
 
 const BellResults = props => (
   <div>
-    <p>Number of Intervening Bell Rings:</p>
+    <p><u>Number of Intervening Bell Rings:</u></p>
     <p>{props.results}</p>
   </div>
 )

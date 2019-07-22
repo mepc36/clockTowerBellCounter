@@ -21,7 +21,7 @@ class TimeMenu extends React.Component {
     }
   
     return (
-      <span>
+      <div>
         <form onChange={(e) => this.props.setTimeHour(e, this.props.toOrFrom)}>
           <select>
             <option value="null">Pick an hour:</option>
@@ -34,7 +34,7 @@ class TimeMenu extends React.Component {
             {minuteOptions}
           </select>
         </form>
-      </span>
+      </div>
     )
   }
 }

@@ -7,6 +7,8 @@ const Container = styled.section`
   text-align: center;
   font-size: 28px;
   margin: 0 auto;
+  color: green;
+  font-family: arial;
 `;
 
 class App extends React.Component {
@@ -107,7 +109,7 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        <h1>Clock Tower Bell Counter!</h1>
+        <h1><u>Clock Tower Bell Counter!</u></h1>
         <TimeSetForm calculateBellRings={this.calculateBellRings.bind(this)} setTimeHour={this.setTimeHour.bind(this)} setTimeMinute={this.setTimeMinute.bind(this)}/>
         <BellResults results={this.state.results}/>
       </Container>
