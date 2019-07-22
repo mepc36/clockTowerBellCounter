@@ -66,10 +66,11 @@ class App extends React.Component {
     var toTimeHour = this.state.toTimeHour;
     var toTimeMinute = this.state.toTimeMinute;
 
-    if (fromTimeHour === null || fromTimeMinute === null || toTimeHour === null || toTimeMinute === null) {
+    if (!this.areTimesValid()) {
       window.alert('You must select two times before the number of bell rings can be calculated!');
       return;
-    } else if (fromTimeHour === toTimeHour) {
+    } 
+    if (fromTimeHour === toTimeHour) {
       newResults = 24;
     }
     else {
@@ -93,6 +94,14 @@ class App extends React.Component {
     this.setState({
       results: newResults,
     })
+  }
+
+  areTimesValid() {
+    if (this.state.fromTimeHour !== null && this.state.fromTimeMinute !== null && this.state.toTimeHour !== null && this.state.toTimeMinute !== null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   render() {

@@ -13,7 +13,7 @@ class TimeMenu extends React.Component {
     const minuteOptions = [];
 
     for (let i = 1; i <= 24; i++) {
-      hourOptions.push(<option value={i} key={i} data-tag="TagValue">{i}</option>);
+      hourOptions.push(<option value={i} key={i}>{i}</option>);
     }
     for (let j = 0; j <= 59; j++) {
       if (j < 10) {
@@ -27,13 +27,13 @@ class TimeMenu extends React.Component {
       <span>
         <form onChange={(e) => this.props.setTimeHour(e, this.props.toOrFrom)}>
           <select>
-            <option>Pick an hour:</option>
+            <option value="null">Pick an hour:</option>
             {hourOptions}
           </select>
         </form>
         <form onChange={(e) => this.props.setTimeMinute(e, this.props.toOrFrom)}>
           <select>
-            <option>Pick a minute:</option>
+            <option value="null">Pick a minute:</option>
             {minuteOptions}
           </select>
         </form>
