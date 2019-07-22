@@ -61,24 +61,38 @@ class App extends React.Component {
 
   calculateBellRings() {
     var newResults = 0;
-    var i = this.state.fromTimeHour;
+    var fromTimeHour = this.state.fromTimeHour;
+    var fromTimeMinute = this.state.fromTimeMinute;
+    var toTimeHour = this.state.toTimeHour;
+    var toTimeMinute = this.state.toTimeMinute;
 
-    if (this.state.fromTimeHour === null || this.state.fromTimeMinute === null || this.state.toTimeHour === null || this.state.toTimeMinute === null) {
-      window.alert('You must select two times before the number of bell rings can be calculated!')
-    } else if (this.state.fromTimeHour === this.state.toTimeHour && this.state.fromTimeMinute === this.state.toTimeMinute) {
-      this.setState({
-        results: 24,
-      })
-    } else {
-      while (i <= this.state.toTimeHour) {
-        newResults += this.state.fromTimeHour;
-        this.state.fromTimeHour += 1;
-        i++;
-      }
-      this.setState({
-        results: newResults,
-      })
+    if (fromTimeHour === null || fromTimeMinute === null || toTimeHour === null || toTimeMinute === null) {
+      window.alert('You must select two times before the number of bell rings can be calculated!');
+      return;
+    } else if (fromTimeHour === toTimeHour) {
+      newResults = 24;
     }
+    else {
+      if (this.state.fromTimeMinute === 0) {
+        while (fromTimeHour <= toTimeHour) {
+          newResults += fromTimeHour
+          fromTimeHour++;
+        }
+      } else {
+        if (fromTimeHour + 1 === toTimeHour) {
+          newResults = toTimeHour;
+        } else {
+          fromTimeHour += 1;
+          while (fromTimeHour <= toTimeHour) {
+            newResults += fromTimeHour
+            fromTimeHour++;
+          }
+        }
+      }
+    }
+    this.setState({
+      results: newResults,
+    })
   }
 
   render() {
