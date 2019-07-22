@@ -23,36 +23,61 @@ class App extends React.Component {
 
   setTimeHour(e, toOrFrom) {
     e.preventDefault();
+    var numeralizedValue = parseInt(e.target.value);
+
+    if (numeralizedValue > 12) {
+      numeralizedValue -= 12;
+    }
+
     if (toOrFrom === 'from') {
       this.setState({
-        fromTimeHour: parseInt(e.target.value)
+        fromTimeHour: numeralizedValue,
       });
     } else {
       this.setState({
-        toTimeHour: parseInt(e.target.value)
+        toTimeHour: numeralizedValue,
       });
     }
   }
 
   setTimeMinute(e, toOrFrom) {
     e.preventDefault();
+    var numeralizedValue = parseInt(e.target.value);
+
+    if (numeralizedValue > 12) {
+      numeralizedValue -= 12;
+    }
+  
     if (toOrFrom === 'from') {
       this.setState({
-        fromTimeMinute: parseInt(e.target.value)
+        fromTimeMinute: numeralizedValue
       });
     } else {
       this.setState({
-        toTimeMinute: parseInt(e.target.value)
+        toTimeMinute: numeralizedValue
       });
     }
   }
 
   calculateBellRings() {
-    if (!this.state.fromTimeHour || !this.state.fromTimeMinute || !this.state.toTimeHour || !this.state.toTimeMinute) {
-      console.log('You must select two times, before the number of bell rings can be calculated!')
-    } else {
-      console.log('Calculating bell rings!');
+    var newResults = 0;
+    var i = this.state.fromTimeHour;
 
+    if (this.state.fromTimeHour === null || this.state.fromTimeMinute === null || this.state.toTimeHour === null || this.state.toTimeMinute === null) {
+      window.alert('You must select two times before the number of bell rings can be calculated!')
+    } else if (this.state.fromTimeHour === this.state.toTimeHour && this.state.fromTimeMinute === this.state.toTimeMinute) {
+      this.setState({
+        results: 24,
+      })
+    } else {
+      while (i <= this.state.toTimeHour) {
+        newResults += this.state.fromTimeHour;
+        this.state.fromTimeHour += 1;
+        i++;
+      }
+      this.setState({
+        results: newResults,
+      })
     }
   }
 

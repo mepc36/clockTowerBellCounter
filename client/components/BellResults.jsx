@@ -10,7 +10,10 @@ class BellResults extends React.Component {
 
   render () {
     return (
-      <div>Results: {this.props.results}</div>
+      <div>
+        <p>Number of Intervening Bell Rings:</p>
+        <p>{this.props.results}</p>
+      </div>
     )
   }
 }
