@@ -8,6 +8,7 @@ The app's tech stack is as follow:
 -Webpack bundler, in order to reconcile bowser vendor conflicts;
 -Express server;
 -React's Styled Components module, for CSS;
+-AirBnB, for the code's style guide (https://github.com/airbnb/javascript);
 
 ## Installation:
 
