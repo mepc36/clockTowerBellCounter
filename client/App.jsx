@@ -13,27 +13,42 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fromTime: null,
-      toTime: null,
+      fromTimeHour: null,
+      fromTimeMinute: null,
+      toTimeHour: null,
+      toTimeMinute: null,
       results: 0,
     }
   }
 
-  setTime(e, toOrFrom) {
+  setTimeHour(e, toOrFrom) {
     e.preventDefault();
     if (toOrFrom === 'from') {
       this.setState({
-        fromTime: parseInt(e.target.value)
-      })
+        fromTimeHour: parseInt(e.target.value)
+      });
     } else {
       this.setState({
-        toTime: parseInt(e.target.value)
-      })
+        toTimeHour: parseInt(e.target.value)
+      });
+    }
+  }
+
+  setTimeMinute(e, toOrFrom) {
+    e.preventDefault();
+    if (toOrFrom === 'from') {
+      this.setState({
+        fromTimeMinute: parseInt(e.target.value)
+      });
+    } else {
+      this.setState({
+        toTimeMinute: parseInt(e.target.value)
+      });
     }
   }
 
   calculateBellRings() {
-    if (!this.state.fromTime || !this.state.toTime) {
+    if (!this.state.fromTimeHour || !this.state.fromTimeMinute || !this.state.toTimeHour || !this.state.toTimeMinute) {
       console.log('You must select two times, before the number of bell rings can be calculated!')
     } else {
       console.log('Calculating bell rings!');
@@ -45,7 +60,7 @@ class App extends React.Component {
     return (
       <Container>
         <h1>Clock Tower Bell Counter!</h1>
-        <TimeSetForm calculateBellRings={this.calculateBellRings.bind(this)} setTime={this.setTime.bind(this)}/>
+        <TimeSetForm calculateBellRings={this.calculateBellRings.bind(this)} setTimeHour={this.setTimeHour.bind(this)} setTimeMinute={this.setTimeMinute.bind(this)}/>
         <BellResults results={this.state.results}/>
       </Container>
     )
