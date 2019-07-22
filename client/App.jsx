@@ -1,4 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Container = styled.section`
+  text-align: center;
+  font-size: 34px;
+  margin: 0 auto;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +17,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>App.jsx!</div>
+      <Container>
+        <h1>Clock Tower Bell Counter:</h1>
+      </Container>
     )
   }
 }
