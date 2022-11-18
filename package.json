@@ -27,6 +27,6 @@
     "surge": "^0.21.3",
     "timepicker.js": "^2.5.0",
     "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.12"
   }
 }
